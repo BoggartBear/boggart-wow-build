@@ -4,3 +4,6 @@
 [submodule "modules/mod-individual-progression"]
 	path = modules/mod-individual-progression
 	url = https://github.com/BoggartBear/mod-individual-progression
+[submodule "modules/mod-ah-bot-plus"]
+	path = modules/mod-ah-bot-plus
+	url = https://github.com/BoggartBear/mod-ah-bot-plus
