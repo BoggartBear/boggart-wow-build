@@ -16,3 +16,6 @@
 [submodule "modules/mod-who-logged"]
 	path = modules/mod-who-logged
 	url = https://github.com/BoggartBear/mod-who-logged
+[submodule "modules/mod-junk-to-gold-plus"]
+	path = modules/mod-junk-to-gold-plus
+	url = https://github.com/BoggartBear/mod-junk-to-gold-plus
