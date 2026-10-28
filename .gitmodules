@@ -10,3 +10,6 @@
 [submodule "modules/mod-account-achievements"]
 	path = modules/mod-account-achievements
 	url = https://github.com/BoggartBear/mod-account-achievements
+[submodule "modules/mod-TimeIsTime"]
+	path = modules/mod-TimeIsTime
+	url = https://github.com/BoggartBear/mod-TimeIsTime
