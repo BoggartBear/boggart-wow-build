@@ -1,3 +1,6 @@
 [submodule "modules/mod-playerbots"]
 	path = modules/mod-playerbots
 	url = https://github.com/BoggartBear/mod-playerbots
+[submodule "modules/mod-individual-progression"]
+	path = modules/mod-individual-progression
+	url = https://github.com/BoggartBear/mod-individual-progression
