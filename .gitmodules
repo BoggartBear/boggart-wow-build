@@ -7,3 +7,6 @@
 [submodule "modules/mod-ah-bot-plus"]
 	path = modules/mod-ah-bot-plus
 	url = https://github.com/BoggartBear/mod-ah-bot-plus
+[submodule "modules/mod-account-achievements"]
+	path = modules/mod-account-achievements
+	url = https://github.com/BoggartBear/mod-account-achievements
