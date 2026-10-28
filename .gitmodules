@@ -13,3 +13,6 @@
 [submodule "modules/mod-TimeIsTime"]
 	path = modules/mod-TimeIsTime
 	url = https://github.com/BoggartBear/mod-TimeIsTime
+[submodule "modules/mod-who-logged"]
+	path = modules/mod-who-logged
+	url = https://github.com/BoggartBear/mod-who-logged
