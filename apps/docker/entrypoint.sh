@@ -39,6 +39,15 @@ fi
 # -v == be verbose
 cp -rnv /azerothcore/env/ref/etc/* "$CONF_DIR"
 
+# Copy module distribution configs to active configs without overwriting custom configs
+for MODULE_CONF_DIST in "$CONF_DIR"/modules/*.conf.dist; do
+    [[ -f "$MODULE_CONF_DIST" ]] || continue
+    MODULE_CONF="${MODULE_CONF_DIST%.dist}"
+    if [[ ! -f "$MODULE_CONF" ]]; then
+        cp -vn "$MODULE_CONF_DIST" "$MODULE_CONF"
+    fi
+done
+
 CONF="$CONF_DIR/$ACORE_COMPONENT.conf"
 CONF_DIST="$CONF_DIR/$ACORE_COMPONENT.conf.dist"
 

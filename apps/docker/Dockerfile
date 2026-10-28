@@ -187,6 +187,30 @@ COPY --chown=$DOCKER_USER:$DOCKER_USER \
      --from=build \
      /azerothcore/env/dist/bin/worldserver /azerothcore/env/dist/bin/worldserver
 
+# Copy modules from build stage, excluding source files and documentation
+COPY --exclude="**/.agents" \
+     --exclude="**/.claude" \
+     --exclude="**/.github" \
+     --exclude="**/.git" \
+     --exclude="**/apps" \
+     --exclude="**/src" \
+     --exclude="**/*.clang-format" \
+     --exclude="**/*.cmake" \
+     --exclude="**/*.cppcheck" \
+     --exclude="**/*.editorconfig" \
+     --exclude="**/*.gitattributes" \
+     --exclude="**/*.gitignore" \
+     --exclude="**/*.gitkeep" \
+     --exclude="**/*.md" \
+     --exclude="**/*.png" \
+     --exclude="**/*.sh" \
+     --exclude="**/*.txt" \
+     --exclude="**/*.yaml" \
+     --exclude="**/*.h" \
+     --chown=$DOCKER_USER:$DOCKER_USER \
+     --from=build \
+     /azerothcore/modules /azerothcore/modules
+
 VOLUME /azerothcore/env/dist/etc
 
 CMD ["worldserver"]
