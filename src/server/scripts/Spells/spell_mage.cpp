@@ -750,8 +750,7 @@ class spell_mage_ignite : public AuraScript
         int32 amount = int32(CalculatePct(eventInfo.GetDamageInfo()->GetDamage(), pct) / igniteDot->GetMaxTicks());
 
         // Xinef: implement ignite bug
-        eventInfo.GetProcTarget()->CastDelayedSpellWithPeriodicAmount(eventInfo.GetActor(), SPELL_MAGE_IGNITE,
-            SPELL_AURA_PERIODIC_DAMAGE, amount, EFFECT_0, TRIGGERED_DONT_ENTER_COMBAT);
+        eventInfo.GetProcTarget()->CastDelayedSpellWithPeriodicAmount(eventInfo.GetActor(), SPELL_MAGE_IGNITE, SPELL_AURA_PERIODIC_DAMAGE, amount);
         //GetTarget()->CastCustomSpell(SPELL_MAGE_IGNITE, SPELLVALUE_BASE_POINT0, amount, eventInfo.GetProcTarget(), true, nullptr, aurEff);
     }
 
@@ -781,8 +780,7 @@ class spell_mage_living_bomb : public AuraScript
             return;
 
         if (Unit* caster = GetCaster())
-            caster->CastSpell(GetTarget(), uint32(aurEff->GetAmount()),
-                TriggerCastFlags(TRIGGERED_FULL_MASK | TRIGGERED_DONT_ENTER_COMBAT), nullptr, aurEff);
+            caster->CastSpell(GetTarget(), uint32(aurEff->GetAmount()), true, nullptr, aurEff);
     }
 
     void Register() override
