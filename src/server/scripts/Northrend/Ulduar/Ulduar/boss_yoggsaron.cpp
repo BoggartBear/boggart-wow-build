@@ -1692,16 +1692,6 @@ struct boss_yoggsaron_corruptor_tentacle : public ScriptedAI
     boss_yoggsaron_corruptor_tentacle(Creature* creature) : ScriptedAI(creature)
     {
         me->SetCombatMovement(false);
-
-        scheduler.SetValidator([this]
-        {
-            return !me->HasUnitState(UNIT_STATE_CASTING);
-        });
-    }
-
-    void Reset() override
-    {
-        scheduler.CancelAll();
     }
 
     void DoAction(int32 param) override
@@ -1730,18 +1720,16 @@ struct boss_yoggsaron_corruptor_tentacle : public ScriptedAI
         return target;
     }
 
-    void JustEngagedWith(Unit* /*who*/) override
+    void UpdateAI(uint32  /*diff*/) override
     {
-        ScheduleTimedEvent(500ms, [&]
-        {
-            if (Unit* target = SelectCorruptionTarget())
-                DoCast(target, RAND(SPELL_APATHY, SPELL_BLACK_PLAGUE, SPELL_DRAINING_POISON, SPELL_CURSE_OF_DOOM));
-        }, 2s);
-    }
+        if (me->HasUnitState(UNIT_STATE_CASTING))
+            return;
 
-    void UpdateAI(uint32 diff) override
-    {
-        scheduler.Update(diff);
+        if (Unit* target = SelectCorruptionTarget())
+        {
+            uint32 spellid = RAND(SPELL_APATHY, SPELL_BLACK_PLAGUE, SPELL_DRAINING_POISON, SPELL_CURSE_OF_DOOM);
+            me->CastSpell(target, spellid, false);
+        }
     }
 };
 
